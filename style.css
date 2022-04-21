@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+}
+body {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgb(26, 52, 54), rgb(157, 229, 229));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card,
+.contents,
+.front-face,
+.back-face {
+  position: absolute;
+}
+.card {
+  height: 450px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card:hover > .back-face {
+  transform: rotateY(0);
+}
+.card:hover .front-face {
+  transform: rotateY(-180deg);
+}
+.card .front-face,
+.card .back-face {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgb(2, 12, 17, 0.8), rgb(13, 41, 54, 0.8)),
+    url("sam.jpg");
+  background-size: cover;
+  background-position: center;
+  backface-visibility: hidden;
+  transition: all 0.3s;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px #000;
+}
+.contents {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card .front h2 {
+  color: #f2f2f2;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.card .front h2::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  width: 0px;
+  margin: 0 auto;
+  background: #f2f2f2;
+  animation: after 1.5s infinite;
+}
+@keyframes after {
+  100% {
+    width: 140px;
+  }
+}
+.card .front span {
+  color: #f2f2f2;
+  font-size: 1.4rem;
+}
+
+.back-face {
+  background: linear-gradient(rgb(13, 41, 54), rgb(2, 12, 17)) !important;
+  transform: rotateY(-180deg);
+}
+.back h2 {
+  color: #f2f2f2;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+.back span {
+  color: #f2f2f2;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.icons i {
+  margin: 0 0.7rem;
+  background: #f2f2f2;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  line-height: 45px;
+  font-size: 1.5rem;
+  animation: jump 3s ease infinite;
+}
+@keyframes jump {
+  100% {
+    transform: translateY(2px);
+  }
+}
+.icons i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.icons i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+.icons i:nth-child(4) {
+  animation-delay: -0.9s;
+}
